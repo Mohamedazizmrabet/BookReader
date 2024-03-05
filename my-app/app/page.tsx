@@ -1,10 +1,12 @@
 import Image from "next/image";
 import NavBar from "./components/navBar";
+import Landing from "./components/landing";
+
 export default function Home() {
   return (
-    <main className="">
+    <main >
       <NavBar/>
-      test
+      <Landing/>
     </main>
   );
 
