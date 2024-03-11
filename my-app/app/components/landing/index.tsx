@@ -16,7 +16,7 @@ function Landing() {
   <div className='bg-[#f0c384] rounded-full	w-2/4 h-3/4  mr-16'>
   <Image
     loading="lazy"
-    src="/photo-1604582480408-e7401f3c18bf-removebg-preview.png"
+    src="/Yellow_And_White_Action_Movie_Poster.png"
     alt="books"
     width={500}
     height={500}
