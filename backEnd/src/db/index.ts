@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from 'sequelize';
-
+import confing from './confing';
 // Initialize Sequelize with your database credentials
-const sequelize = new Sequelize('books', 'mrabet', 'clavier123', {
+const sequelize = new Sequelize(confing.dbName, confing.dbUser, confing.dbPassword, {
   host: 'localhost',
   dialect: 'mysql',
 });
