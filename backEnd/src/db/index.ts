@@ -1,5 +1,7 @@
 import { Sequelize, DataTypes } from 'sequelize';
+
 import confing from './confing';
+import UserModel from './models/User'
 // Initialize Sequelize with your database credentials
 const sequelize = new Sequelize(confing.dbName, confing.dbUser, confing.dbPassword, {
   host: 'localhost',
@@ -7,16 +9,7 @@ const sequelize = new Sequelize(confing.dbName, confing.dbUser, confing.dbPasswo
 });
 
 // Define your model
- sequelize.define('User', {
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false // Example constraint, adjust as needed
-  },
-  birthday: {
-    type: DataTypes.DATE,
-    allowNull: true // Example constraint, adjust as needed
-  }
-});
+ UserModel(sequelize)
 
 
 
