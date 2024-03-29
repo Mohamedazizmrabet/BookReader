@@ -12,6 +12,7 @@ function Landing() {
       )}
     </h1>
     <h2 className='text-2xl mt-9' >The most appropriate book site to read books.</h2>
+    
   </div>
   <div className='bg-[#f0c384] rounded-full	w-2/4 h-3/4  mr-16'>
   <Image
