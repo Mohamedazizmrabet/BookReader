@@ -1,25 +1,18 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, Request, Response } from "express";
 //start here
-import sequelize  from './db/index';
-
-
+import sequelize from "./db/index";
+import fileRouter from "./routes/fileRoute";
+import cors from "cors";
+import multer from "multer";
 const app: Express = express();
+
 const port = 3000;
-
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello from Express + TypeScript!');
-});
-
-
-
-// Test the database connection
-sequelize.authenticate()
-  .then(() => {
-    console.log("Connection has been established successfully.");
-  })
-  .catch((err:any) => {
-    console.error("Unable to connect to the database:", err);
-  });
+//* Middlewares
+app.use(cors());
+app.use(express.json());
+const upload = multer();
+//* routes
+app.use("/file", upload.single("file"), fileRouter);
 
 // Synchronize the models with the database
 // sequelize.sync({ force: true })
@@ -29,6 +22,6 @@ sequelize.authenticate()
 //   .catch((err) => {
 //     console.error("Error synchronizing database:", err);
 //   });
-// app.listen(port, () => {
-//     console.log(`Server is running at http://localhost:${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
