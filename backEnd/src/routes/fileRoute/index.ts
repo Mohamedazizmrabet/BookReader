@@ -16,10 +16,15 @@ router.post("/upload", async (req: Request, res: Response) => {
     let result = null;
     if (bufferFile) {
       result = await processPDF(bufferFile);
-      console.log(result?.context);
-    }
+      const test = await result?.save();
+      console.log("test", test);
 
-    // console.log(result);
+      const allPages = result?.getPages();
+      console.log(
+        "pagessssssss",
+        allPages ? allPages[0].node.context : "no pages found"
+      );
+    }
     res.status(201).json("added");
   } catch (error) {
     console.error(error);

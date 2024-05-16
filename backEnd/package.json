@@ -20,6 +20,7 @@
     "mysql2": "^3.9.2",
     "nodemon": "^3.1.0",
     "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.2.67",
     "sqlite3": "^5.1.7",
     "typescript": "^5.4.2"
   },
