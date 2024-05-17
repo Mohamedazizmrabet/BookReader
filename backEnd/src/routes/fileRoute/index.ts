@@ -22,7 +22,7 @@ router.post("/upload", async (req: Request, res: Response) => {
       const allPages = result?.getPages();
       console.log(
         "pagessssssss",
-        allPages ? allPages[0].node.context : "no pages found"
+        allPages ? allPages[0].get : "no pages found"
       );
     }
     res.status(201).json("added");
