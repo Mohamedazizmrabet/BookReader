@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from io import StringIO
 import fitz  # Using PyMuPDF for efficient text extraction
-
 app = Flask(__name__)
 
 @app.route('/upload-pdf', methods=['POST'])
