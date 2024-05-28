@@ -10,14 +10,6 @@ export default (sequelize: Sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    genre: {
-      type: DataTypes.TEXT("medium"),
-      allowNull: true,
-    },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     numberOfPages: {
       type: DataTypes.INTEGER,
       allowNull: true,

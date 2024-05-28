@@ -7,7 +7,7 @@
     "skipLibCheck": true,                     // Skip type checking of declaration files
     "forceConsistentCasingInFileNames": true, // Ensure file names are case-consistent
     "outDir": "./dist",                       // Output directory for compiled files
-    "rootDir": "./src",                       // Root directory of input files
+    "rootDir": "./",                       // Root directory of input files
     "typeRoots": ["./node_modules/@types", "./src/types"], // Directories for type definitions
     "resolveJsonModule": true,                // Include JSON modules
     "allowSyntheticDefaultImports": true      // Allow default imports from modules with no default export
