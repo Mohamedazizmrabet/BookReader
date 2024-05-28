@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 const upload = multer();
 //* routes
-app.use("/file", upload.single("file"), fileRouter);
+app.use("/file", fileRouter);
 
 // Synchronize the models with the database
 // sequelize.sync({ force: true })

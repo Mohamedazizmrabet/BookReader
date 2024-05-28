@@ -1,34 +1,28 @@
 import express, { Request, Response } from "express";
+import fs from "fs"; // Use the promise-based API
+import pdf from "pdf-parse"; // Import pdf-parse
+
 const router = express.Router();
-import fs from "fs";
-import processPDF from "../../../function/readPDF";
+
 router.post("/upload", async (req: Request, res: Response) => {
   try {
-    // Check if file exists before processing
-    if (!req.file) {
-      return res.status(400).send("No file uploaded!");
-    }
+    const filePath =
+      "C:/Users/Mega-PC/Desktop/Books/Manipulation Dark Psychology to Manipulate and Control People by Arthur Horn [Horn, Arthur] (z-lib.org).pdf";
+    fs.readFile(filePath, async (err, data) => {
+      const pdfData = await pdf(data); // Parse the PDF data
+      console.log("pdfData;", pdfData.text);
 
-    console.log("fileName", req.file.buffer);
-    const bufferFile = req.file.buffer;
-    // You likely want to use req.file.buffer to access the binary data
+      const workWith = pdfData.text.split("");
+      const result = JSON.stringify(workWith);
 
-    let result = null;
-    if (bufferFile) {
-      result = await processPDF(bufferFile);
-      const test = await result?.save();
-      console.log("test", test);
+      console.log(result);
+    }); // Read the file as a Buffer
 
-      const allPages = result?.getPages();
-      console.log(
-        "pagessssssss",
-        allPages ? allPages[0].get : "no pages found"
-      );
-    }
-    res.status(201).json("added");
+    res.json("added");
   } catch (error) {
     console.error(error);
     res.status(500).send("Error processing file!");
   }
 });
+
 export default router;
