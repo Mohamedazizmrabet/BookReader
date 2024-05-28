@@ -12,7 +12,7 @@
 # next.js
 /.next/
 /out/
-
+backEnd/src/db/confing.ts
 # production
 /build
 

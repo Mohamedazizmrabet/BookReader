@@ -1,5 +1,5 @@
 export default {
-    dbName: 'books',
-    dbUser: 'root',
-    dbPassword: 'root',
-}
+  dbName: "books",
+  dbUser: "mrabet",
+  dbPassword: "clavier123",
+};
