@@ -1,13 +1,28 @@
 import db from "../db/index";
-export const addConent = async (req: any, res: any) => {
-  const { pageNumber, content } = req.body;
+import { Request, Response } from "express";
+export const addConent = async (id: string, array: string[][]) => {
   try {
-    const result = await db.Content.create({
-      pageNumber,
-      content,
+    console.log(array);
+
+    for (let i = 0; i < array.length; i++) {
+      await db.Content.create({
+        pageNumber: i,
+        content: JSON.stringify(array[i]),
+        BookId: id,
+      });
+    }
+    return "content added successfully for the ";
+  } catch (error) {
+    throw error;
+  }
+};
+export const getContent = async (req: Request, res: Response) => {
+  try {
+    const result = await db.Content.findAll({
+      where: { BookId: req.params.id },
     });
     res.json(result);
   } catch (error) {
-    res.status(500).json(error);
+    throw error;
   }
 };

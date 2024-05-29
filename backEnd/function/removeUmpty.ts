@@ -1,3 +1,3 @@
-export const remove = (array: []) => {
-  return array.filter((item) => item !== "");
+export const remove = (array: string[]) => {
+  return array.filter((item) => item);
 };
