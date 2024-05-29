@@ -18,11 +18,11 @@ app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
 // Synchronize the models with the database
-sequelize.sequelize
-  .sync({ force: true })
-  .then(() => {
-    console.log("Database synchronized successfully.");
-  })
-  .catch((err) => {
-    console.error("Error synchronizing database:", err);
-  });
+// sequelize.sequelize
+//   .sync({ force: true })
+//   .then(() => {
+//     console.log("Database synchronized successfully.");
+//   })
+//   .catch((err) => {
+//     console.error("Error synchronizing database:", err);
+//   });

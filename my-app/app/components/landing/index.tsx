@@ -4,27 +4,29 @@ import Image from 'next/image'
 function Landing() {
 
   return (
-    <div className="grid grid-cols-2 gap-10 items-center ml-32">  
-  <div className="col-span-1 w-full">
-    <h1 className="text-5xl font-bold w-full mt-9">
-      {upperCaseTheFirstLetter(
-        "Upload Your Books And Start Reading Them With Us. Invite Your friends And see their progress ."
-      )}
-    </h1>
-    <h2 className='text-2xl mt-9' >The most appropriate book site to read books.</h2>
-    
-  </div>
-  <div className='bg-[#f0c384] rounded-full	w-2/4 h-3/4  mr-16'>
-  <Image
-    loading="lazy"
-    src="/Yellow_And_White_Action_Movie_Poster.png"
-    alt="books"
-    width={500}
-    height={500}
-  />
+    <>
+      <div className="grid grid-cols-2 gap-10 items-center ml-32">
+        <div className="col-span-1 w-full">
+          <h1 className="text-5xl font-bold w-full mt-9">
+            {upperCaseTheFirstLetter(
+              "Upload Your Books And Start Reading Them With Us. Invite Your friends And see their progress ."
+            )}
+          </h1>
+          <h2 className='text-2xl mt-9' >The most appropriate book site to read books.</h2>
 
-  </div>
-</div>
+        </div>
+        <div className='bg-[#f0c384] rounded-full	w-2/4 h-3/4  mr-16'>
+          <Image
+            loading="lazy"
+            src="/Yellow_And_White_Action_Movie_Poster.png"
+            alt="books"
+            width={500}
+            height={500}
+          />
+
+        </div>
+      </div>
+    </>
   )
 }
 

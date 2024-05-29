@@ -13,25 +13,27 @@ function Upload() {
             setIsLoading(false); // Reset loading state (optional)
             return;
         }
-        const formData = new FormData();
-        formData.append("file", file);
+        console.log(file);
+
+        // const formData = new FormData();
+        // formData.append("file", file);
 
 
-        try {
-            const response = await axios.post('http://localhost:3000/file/upload', formData);
-            console.log(response);
+        // try {
+        //     const response = await axios.post('http://localhost:3000/file/upload', formData);
+        //     console.log(response);
 
-            if (!response.data.length) {
-                throw new Error(`Upload failed with status: ${response.status}`);
-            }
+        //     if (!response.data.length) {
+        //         throw new Error(`Upload failed with status: ${response.status}`);
+        //     }
 
-            console.log('File uploaded successfully!');
-            setFile(null); // Clear file selection after successful upload
-        } catch (error) {
-            console.error('Error uploading file:', error);
-        } finally {
-            setIsLoading(false); // Reset loading state (optional)
-        }
+        //     console.log('File uploaded successfully!');
+        //     setFile(null); // Clear file selection after successful upload
+        // } catch (error) {
+        //     console.error('Error uploading file:', error);
+        // } finally {
+        //     setIsLoading(false); // Reset loading state (optional)
+        // }
     };
 
     return (
