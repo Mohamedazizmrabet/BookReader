@@ -6,5 +6,5 @@ const router = express.Router();
 
 router.post("/upload", createABook);
 router.get("/getAllBooks", getAllBooks);
-router.get("/content/:id", getContent);
+router.get("/content/:id/:page", getContent);
 export default router;

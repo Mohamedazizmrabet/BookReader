@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 const upload = multer();
 //* routes
-app.use("/file", fileRouter);
+app.use("/file", upload.single("file"), fileRouter);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);

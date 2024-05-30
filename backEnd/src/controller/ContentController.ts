@@ -19,6 +19,8 @@ export const addConent = async (id: string, array: string[][]) => {
 export const getContent = async (req: Request, res: Response) => {
   try {
     const result = await db.Content.findAll({
+      limit: 10,
+      offset: parseInt(req.params.page),
       where: { BookId: req.params.id },
     });
     res.json(result);

@@ -16,9 +16,18 @@ export const getAllBooks = async (req: Request, res: Response) => {
 };
 export const createABook = async (req: Request, res: Response) => {
   try {
+    console.log(req.file?.buffer);
+    if (req.file?.buffer) {
+      const pdfUploaded = await pdf(req.file?.buffer);
+
+      console.log("uploaded one", pdfUploaded);
+    }
+
     const filePath =
       "C:/Users/Mega-PC/Desktop/Books/Manipulation Dark Psychology to Manipulate and Control People by Arthur Horn [Horn, Arthur] (z-lib.org).pdf";
     fs.readFile(filePath, async (err, data) => {
+      // console.log(data);
+
       const pdfData = await pdf(data); // Parse the PDF data
       // console.log(pdfData);
       const bookInfo = {
