@@ -6,3 +6,11 @@ interface Books {
   createdAt: string;
   updatedAt: string;
 }
+interface Centent {
+  id: number;
+  content: string;
+  pageNumber: number;
+  BookId: number;
+  createdAt: string;
+  updatedAt: string;
+}
