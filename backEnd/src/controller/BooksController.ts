@@ -29,6 +29,8 @@ export const createABook = async (req: Request, res: Response) => {
       // console.log(data);
 
       const pdfData = await pdf(data); // Parse the PDF data
+      console.log("in the fs", pdfData);
+
       // console.log(pdfData);
       const bookInfo = {
         bookName: pdfData.info.Title,

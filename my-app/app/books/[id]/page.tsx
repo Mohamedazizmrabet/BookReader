@@ -15,7 +15,7 @@ import {
 import BooKs from "../../components/Abook/Books"
 export default function ExampleClientComponent() {
 
-    const [data, setData] = useState<Books[] | []>([])
+    const [data, setData] = useState<Centent[] | []>([])
     const [page, setPage] = useState(0)
     const searchParams = useSearchParams()
     const pathname = usePathname()
@@ -34,7 +34,7 @@ export default function ExampleClientComponent() {
             const result = await axios.get(`http://localhost:3000/file/content/${id}/${page}`)
             console.log(result.data);
 
-            setData(result.data as Books[])
+            setData(result.data as Centent[])
 
         }
 
