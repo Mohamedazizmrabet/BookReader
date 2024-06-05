@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import PagesInAbook from './pagesInAbook';
 interface dataProps {
     id: number;
@@ -12,7 +12,6 @@ interface dataProps {
 function Books({ data, page }: { data: Centent[], page: number }) {
     console.log(data);
 
-    const book = useRef(null);
 
     const contentGenerater = (content: Centent, centent2: Centent): dataProps[] => {
         // Assuming content is a JSON string

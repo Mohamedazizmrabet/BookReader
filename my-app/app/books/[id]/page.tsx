@@ -23,8 +23,8 @@ export default function ExampleClientComponent() {
     const id = pathURL[pathURL.length - 1]
 
     const upDownCounter = (bol: boolean) => {
-        if (bol) setPage(page + 1)
-        else setPage(page - 1)
+        if (bol) setPage(page + 2)
+        else setPage(page - 2)
     }
     useEffect(() => {
         console.log(page, "in useffect");
