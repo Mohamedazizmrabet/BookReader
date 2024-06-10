@@ -1,6 +1,7 @@
 "use client"
-import React, { useEffect, useRef } from 'react';
-import gsap from "gsap"
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from "gsap";
+
 interface dataProps {
     id: number;
     content: string[];
@@ -9,63 +10,69 @@ interface dataProps {
     createdAt: string;
     updatedAt: string;
 }
-function PagesInAbook({ data, page }: { data: dataProps[], page: number }) {
 
-    console.log(data);
-    const firstPage = useRef(null)
-    const secondPage = useRef(null)
+function PagesInAbook({ data, page, upDownCounter }: { data: dataProps[], page: number, upDownCounter: (bol: boolean) => void }) {
+    const firstPage = useRef<HTMLDivElement>(null);
+    const secondPage = useRef<HTMLDivElement>(null);
+
+    const [firstPageContent, setFirstPageContent] = useState<dataProps | null>(null);
+    const [secondPageContent, setSecondPageContent] = useState<dataProps | null>(null);
+
+    useEffect(() => {
+        setFirstPageContent(data[0]);
+        setSecondPageContent(data[1]);
+    }, [data]);
+
     const handleFlipPage = () => {
-        gsap.to(firstPage.current, {
-            duration: 1, // Adjust animation duration as needed
-            ease: 'power3.inOut', // Adjust easing function for smooth transition
-            rotationY: 180,
-            transformOrigin: 'right', // Rotate from left edge
-        });
-
         gsap.to(secondPage.current, {
             duration: 1,
-            ease: 'power3.inOut',
-            rotationY: 180,
-            transformOrigin: 'left', // Rotate from left edge
+            ease: "power3.inOut",
+            rotationY: -180,
+            transformOrigin: "left",
             onComplete: () => {
-                // After the flip, update the pages
-                gsap.set(secondPage.current, {
-                    rotationX: 180,
-                    transformOrigin: 'left center',
-                });
-            },
+                if (secondPage.current && firstPage.current) {
+                    gsap.set(secondPage.current, {
+                        clearProps: "all"
+                    });
+                    upDownCounter(true);
+                    // // Update page content after flipping
+                    // const nextPageIndex = (data.findIndex(d => d.id === firstPageContent?.id) + 1) % data.length;
+                    // setFirstPageContent(data[nextPageIndex]);
+                    // setSecondPageContent(data[(nextPageIndex + 1) % data.length]);
+                } else {
+                    return;
+                }
+            }
         });
     };
+
     useEffect(() => {
         return () => {
             gsap.killTweensOf(firstPage.current); // Clear any existing animations
             gsap.killTweensOf(secondPage.current);
         };
     }, []);
-    return (
-        <div className="flex justify-center w-[100%] h-[90vh]">
-            <div ref={firstPage} className="w-1/2 p-4 bg-white border border-gray-200 rounded shadow-md mx-2">
 
-                {data[0].content.map((item, index) => (
-                    item
-                ))}
-                <div className="  text-center pt-6   ">
-                    {data[0].pageNumber}
+    return (
+        <div className="flex justify-center w-full h-[90vh] perspective-1000">
+            <div ref={firstPage} className="relative w-1/2 p-4 bg-white border border-gray-200 rounded shadow-md mx-2 overflow-auto max-h-full break-words transform-style-3d backface-hidden">
+                {firstPageContent ? firstPageContent.content.map((item, index) => (
+                    <div key={index}>{item}</div>
+                )) : "loading"}
+                <div className="text-center pt-6">
+                    {firstPageContent?.pageNumber}
                 </div>
             </div>
 
-            <div ref={secondPage} className="w-1/2 p-4 bg-white border border-gray-200 rounded shadow-md mx-2">
-
-                {data[1].content.map((item, index) => (
-                    item
-                ))}
-
-                <div className='text-center'>
-                    {data[1].pageNumber}
+            <div ref={secondPage} className="relative w-1/2 p-4 bg-white border border-gray-200 rounded shadow-md mx-2 overflow-auto max-h-full break-words transform-style-3d backface-hidden">
+                {secondPageContent ? secondPageContent.content.map((item, index) => (
+                    <div key={index}>{item}</div>
+                )) : "loading"}
+                <div className="text-center">
+                    {secondPageContent?.pageNumber}
                 </div>
             </div>
             <button onClick={handleFlipPage}>Turn Page</button>
-
         </div>
     );
 }

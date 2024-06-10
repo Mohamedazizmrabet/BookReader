@@ -9,9 +9,10 @@ interface dataProps {
     createdAt: string;
     updatedAt: string;
 }
-function Books({ data, page }: { data: Centent[], page: number }) {
-    console.log(data);
+function Books({ data, page, upDownCounter }: { data: Centent[], page: number, upDownCounter: (bol: boolean) => void }) {
+    console.log(data, page);
 
+    console.log(upDownCounter);
 
     const contentGenerater = (content: Centent, centent2: Centent): dataProps[] => {
         // Assuming content is a JSON string
@@ -42,7 +43,7 @@ function Books({ data, page }: { data: Centent[], page: number }) {
     return (
         <div>
             {
-                data.length ? <PagesInAbook data={contentGenerater(data[page], data[page + 1])} page={page} /> : "loading"
+                data.length ? <PagesInAbook upDownCounter={upDownCounter} data={contentGenerater(data[page], data[page + 1])} page={page} /> : "loading"
             }
         </div>
 

@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import styles from "./style.module.scss"
 import { Button } from '@/components/ui/button'
-
+import Link from 'next/link'
 const NavBar = () => {
   return (
     <nav className="flex justify-evenly h-16 px-4 cursor-pointer">
@@ -18,9 +18,11 @@ const NavBar = () => {
         <Button className="rounded-full bg-transparent border  border-white hover:bg-white hover:text-emerald-500 text-black px-4 py-2">
           Log in
         </Button>
-        <Button className="rounded-full bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 w-2/3">
-          Get Started
-        </Button>
+        <Link href={"/books"}>
+          <Button className="rounded-full bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 w-2/3">
+            Get Started
+          </Button>
+        </Link>
       </div>
     </nav>
   )

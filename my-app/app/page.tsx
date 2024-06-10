@@ -5,9 +5,9 @@ import Loading from "./loading";
 export default function Home() {
   return (
     <main >
-      <NavBar />
+      {/* <NavBar /> */}
       <Landing />
-      <Loading />
+      {/* <Loading /> */}
     </main>
   );
 

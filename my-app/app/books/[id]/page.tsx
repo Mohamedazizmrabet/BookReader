@@ -45,7 +45,7 @@ export default function ExampleClientComponent() {
 
     return <div>
 
-        <BooKs data={data} page={page} />
+        <BooKs data={data} page={page} upDownCounter={upDownCounter} />
         <Pagination>
             <PaginationContent>
                 <PaginationItem>
